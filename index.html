@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>股票分析面板</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero-panel">
+        <div class="topbar">
+          <div>
+            <p class="eyebrow">Stock Lens</p>
+            <h1>股票分析面板</h1>
+          </div>
+          <div class="market-clock">
+            <span id="todayLabel">--</span>
+            <strong>当前横截面</strong>
+          </div>
+        </div>
+
+        <form class="search-card" id="stockForm">
+          <label for="symbolInput">输入股票代码</label>
+          <div class="search-row">
+            <input
+              id="symbolInput"
+              name="symbol"
+              type="text"
+              placeholder="例如 NVDA、AMZN、MSFT、AAPL"
+              autocomplete="off"
+            />
+            <button type="submit" aria-label="查看股票">查看</button>
+            <button class="ghost-button" type="button" id="shareButton">复制链接</button>
+          </div>
+          <p class="data-status" id="dataStatus">正在连接行情数据...</p>
+          <div class="chips" id="quickSymbols" aria-label="常用股票"></div>
+        </form>
+
+        <section class="dashboard-grid">
+          <article class="quote-panel">
+            <div class="quote-header">
+              <div>
+                <p class="muted">当前股票</p>
+                <h2 id="companyName">--</h2>
+              </div>
+              <span class="symbol-pill" id="symbolPill">--</span>
+            </div>
+
+            <div class="price-row">
+              <strong id="currentPrice">--</strong>
+              <span id="priceChange">--</span>
+            </div>
+
+            <div class="stat-grid">
+              <div>
+                <span>价格百分位</span>
+                <strong id="percentile">--</strong>
+              </div>
+              <div>
+                <span>状态</span>
+                <strong id="valuationState">--</strong>
+              </div>
+              <div>
+                <span>市值</span>
+                <strong id="marketCap">--</strong>
+              </div>
+              <div>
+                <span>波动率</span>
+                <strong id="volatility">--</strong>
+              </div>
+            </div>
+          </article>
+
+          <article class="chart-panel">
+            <div class="panel-title">
+              <h2>价格折线</h2>
+              <span id="chartRange">近 3 个月</span>
+            </div>
+            <canvas id="trendChart" width="720" height="330"></canvas>
+          </article>
+        </section>
+      </section>
+
+      <section class="section-panel">
+        <div class="panel-title">
+          <div>
+            <h2>当前横截面</h2>
+            <p>基于最新行情与近 3 个月价格区间</p>
+          </div>
+          <span id="tableHint">输入代码后可生成分享链接</span>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>公司</th>
+                <th>当前值</th>
+                <th>百分位</th>
+                <th>状态</th>
+              </tr>
+            </thead>
+            <tbody id="comparisonRows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section-panel compact">
+        <div class="panel-title">
+          <h2>分析摘要</h2>
+          <span id="riskTag">--</span>
+        </div>
+        <p id="analysisText" class="analysis-text">--</p>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
