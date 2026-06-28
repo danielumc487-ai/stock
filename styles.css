@@ -1,0 +1,420 @@
+:root {
+  color-scheme: dark;
+  --bg: #050711;
+  --panel: rgba(38, 55, 112, 0.78);
+  --panel-strong: rgba(72, 78, 150, 0.82);
+  --line: rgba(178, 203, 255, 0.22);
+  --text: #eef4ff;
+  --muted: #afbfdf;
+  --green: #31d843;
+  --yellow: #ffd85a;
+  --blue: #75a2ff;
+  --red: #ff6f7f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(61, 92, 180, 0.28), transparent 34%),
+    linear-gradient(180deg, #03040a 0%, #091124 100%);
+  color: var(--text);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.app-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0;
+}
+
+.hero-panel,
+.section-panel {
+  border: 1px solid rgba(160, 185, 255, 0.32);
+  background:
+    linear-gradient(180deg, rgba(93, 91, 167, 0.82), rgba(31, 54, 115, 0.9)),
+    var(--panel);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 24px 70px rgba(0, 0, 0, 0.32);
+  border-radius: 8px;
+}
+
+.hero-panel {
+  padding: 28px;
+}
+
+.section-panel {
+  margin-top: 18px;
+  padding: 24px 28px 28px;
+}
+
+.section-panel.compact {
+  padding-bottom: 24px;
+}
+
+.topbar,
+.panel-title,
+.quote-header,
+.search-row,
+.chips,
+.price-row {
+  display: flex;
+  align-items: center;
+}
+
+.topbar,
+.panel-title,
+.quote-header,
+.price-row {
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.eyebrow,
+.muted,
+.panel-title p,
+.market-clock,
+.stat-grid span,
+.analysis-text {
+  color: var(--muted);
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0;
+  font-size: clamp(2rem, 5vw, 4.6rem);
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+h2 {
+  margin-bottom: 0;
+  font-size: 1.15rem;
+}
+
+.market-clock {
+  text-align: right;
+}
+
+.market-clock span,
+.market-clock strong {
+  display: block;
+}
+
+.market-clock span {
+  margin-bottom: 4px;
+  font-size: 1.55rem;
+  color: var(--text);
+}
+
+.search-card {
+  margin: 28px 0;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(8, 15, 35, 0.36);
+}
+
+.search-card label {
+  display: block;
+  margin-bottom: 10px;
+  color: #d7e3ff;
+  font-weight: 700;
+}
+
+.search-row {
+  gap: 10px;
+}
+
+input {
+  width: 100%;
+  min-width: 0;
+  height: 46px;
+  border: 1px solid rgba(195, 213, 255, 0.28);
+  border-radius: 8px;
+  background: rgba(3, 7, 18, 0.46);
+  color: var(--text);
+  padding: 0 14px;
+  outline: none;
+}
+
+input:focus {
+  border-color: rgba(138, 174, 255, 0.86);
+  box-shadow: 0 0 0 3px rgba(117, 162, 255, 0.16);
+}
+
+button {
+  min-width: 72px;
+  height: 46px;
+  border: 0;
+  border-radius: 8px;
+  padding: 0 20px;
+  color: #07111f;
+  background: #dce8ff;
+  font-weight: 800;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: wait;
+  opacity: 0.68;
+}
+
+.ghost-button {
+  border: 1px solid rgba(190, 210, 255, 0.25);
+  color: #dbe6ff;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.data-status {
+  margin: 10px 0 0;
+  color: #c7d6f6;
+  font-size: 0.92rem;
+}
+
+.chips {
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.chip {
+  height: 32px;
+  border: 1px solid rgba(190, 210, 255, 0.25);
+  border-radius: 999px;
+  padding: 0 12px;
+  color: #dbe6ff;
+  background: rgba(255, 255, 255, 0.07);
+  cursor: pointer;
+}
+
+.chip.active {
+  color: #061020;
+  background: var(--blue);
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.88fr) minmax(300px, 1.42fr);
+  gap: 18px;
+}
+
+.quote-panel,
+.chart-panel {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(9, 16, 39, 0.34);
+  padding: 20px;
+}
+
+.symbol-pill,
+.panel-title span,
+#riskTag {
+  flex: 0 0 auto;
+  border: 1px solid rgba(185, 207, 255, 0.24);
+  border-radius: 999px;
+  padding: 6px 10px;
+  color: #d6e3ff;
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 0.82rem;
+}
+
+.price-row {
+  margin: 24px 0;
+}
+
+.price-row strong {
+  font-size: clamp(2.4rem, 8vw, 5rem);
+  line-height: 0.9;
+}
+
+.price-row span {
+  color: var(--green);
+  font-weight: 800;
+}
+
+.price-row span.negative {
+  color: var(--red);
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.stat-grid div {
+  min-height: 86px;
+  border: 1px solid rgba(180, 205, 255, 0.18);
+  border-radius: 8px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.stat-grid span,
+.stat-grid strong {
+  display: block;
+}
+
+.stat-grid strong {
+  margin-top: 8px;
+  font-size: 1.35rem;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: min(330px, 42vh);
+  margin-top: 14px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 620px;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 18px 14px;
+  text-align: left;
+  border-bottom: 1px dashed rgba(185, 207, 255, 0.27);
+}
+
+th {
+  color: #bed0f1;
+  font-size: 0.98rem;
+}
+
+td {
+  font-size: 1.16rem;
+}
+
+.company-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 800;
+}
+
+.dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  box-shadow: 0 0 16px currentColor;
+}
+
+.percent {
+  color: var(--green);
+  font-weight: 800;
+}
+
+.status-low {
+  color: #dbe5ff;
+}
+
+.status-mid {
+  color: var(--yellow);
+}
+
+.status-high {
+  color: var(--red);
+}
+
+.analysis-text {
+  margin: 16px 0 0;
+  max-width: 920px;
+  line-height: 1.75;
+}
+
+@media (max-width: 760px) {
+  .app-shell {
+    width: min(100% - 20px, 1180px);
+    padding: 18px 0;
+  }
+
+  .hero-panel,
+  .section-panel {
+    padding: 18px;
+  }
+
+  .topbar,
+  .panel-title,
+  .price-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .market-clock {
+    text-align: left;
+  }
+
+  .search-row,
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .search-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .dashboard-grid,
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  th,
+  td {
+    padding: 13px 5px;
+    font-size: 0.92rem;
+  }
+
+  table {
+    min-width: 0;
+  }
+
+  .company-cell {
+    gap: 8px;
+  }
+
+  .dot {
+    width: 14px;
+    height: 14px;
+  }
+}
